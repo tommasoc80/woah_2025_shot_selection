@@ -53,7 +53,7 @@ def json2df(input_f):
     """
     merged_df.to_csv('MD_hard_label_train.csv', columns = ['text', 'hard_label'], index=False)
     labels_only = merged_df.iloc[:, 3:]
-    labels_only.to_csv('MD4mace_train.csv')
+    labels_only.to_csv('MD4mace_train.csv', index=False)
 
 
 if __name__ == '__main__':
