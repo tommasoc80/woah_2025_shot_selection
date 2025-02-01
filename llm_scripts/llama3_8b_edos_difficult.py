@@ -25,7 +25,7 @@ for index, row in df.iterrows():
     messages = [
         {"role": "system", "content": "You are an AI expert in text classification and content moderation."},
         {"role": "user", "content": """
-        You will read a text. Is the text misogynous?.
+        You will read a text. Is the text sexist?.
         Answer only with 0 for NOT and 1 for YES.
         Do not write an introduction or summary. Classify always the text.
         Here are twenty examples:
