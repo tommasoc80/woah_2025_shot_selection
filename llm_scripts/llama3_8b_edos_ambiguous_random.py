@@ -118,5 +118,5 @@ for index, row in df.iterrows():
 
 
 df['model_answer'] = responses
-df.to_csv('/scratch/p281734/edos_llama3_ambiguous_first.csv', index=False)
+df.to_csv('/scratch/p281734/edos_llama3_ambiguous_random.csv', index=False)
 
