@@ -8,7 +8,7 @@ model = "meta-llama/Meta-Llama-3-8B-Instruct"
 #model = "~/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/"
 tokenizer = AutoTokenizer.from_pretrained(model)
 
-df = pd.read_csv('/scratch/p281734/ghc_test.csv', sep=',', header=0)
+df = pd.read_csv('/scratch/p281734/ghc_test.tsv', sep='\t', header=0)
 #df = pd.read_csv('/scratch/p281734/prova.csv', sep=',', header=0)
 
 responses = []
