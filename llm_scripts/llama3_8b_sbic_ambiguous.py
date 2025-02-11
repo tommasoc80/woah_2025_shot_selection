@@ -21,7 +21,7 @@ pipeline = transformers.pipeline(
 )
 
 for index, row in df.iterrows():
-    text = row['text']
+    text = row['post']
     messages = [
         {"role": "system", "content": "You are an AI expert in text classification and content moderation."},
         {"role": "user", "content": """
