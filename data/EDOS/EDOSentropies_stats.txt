@@ -1,0 +1,11 @@
+Entropy average: 0.43372419278772334
+
+Entropy std: 0.30400258114647577
+
+Entropy median: 0.651762201565012
+
+Entropy median absolute deviation: 0.03121695387079315
+
+Entropy max value: 0.6931360713536541
+
+Entropy min value: 4.848685844615291e-05
