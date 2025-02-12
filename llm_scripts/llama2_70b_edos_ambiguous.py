@@ -21,14 +21,15 @@ model = AutoModelForCausalLM.from_pretrained(
     trust_remote_code=True,
 )
 
-#df = pd.read_csv('/scratch/p281734/edos_aggregated_test.csv', sep=',', header=0)
-df = pd.read_csv('/scratch/p281734/prova.csv', sep=',', header=0)
+df = pd.read_csv('/scratch/p281734/edos_aggregated_test.csv', sep=',', header=0)
+#df = pd.read_csv('/scratch/p281734/prova.csv', sep=',', header=0)
 
 responses = []
 
 pipeline = transformers.pipeline(
     "text-generation",
     model=model,
+    tokenizer=tokenizer,
     model_kwargs={"torch_dtype": torch.bfloat16},
     device_map="auto",
 )
@@ -131,6 +132,6 @@ for index, row in df.iterrows():
 
 
 df['model_answer'] = responses
-#df.to_csv('/scratch/p281734/edos_llama3_ambiguous_first.csv', index=False)
-df.to_csv('/scratch/p281734/prova-out.csv', index=False)
+df.to_csv('/scratch/p281734/edos_llama2_ambiguous_first.csv', index=False)
+#df.to_csv('/scratch/p281734/prova-out.csv', index=False)
 
