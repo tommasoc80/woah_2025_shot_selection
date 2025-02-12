@@ -4,9 +4,10 @@ import transformers
 import torch
 import pandas as pd
 
-model_name = "meta-llama/Llama-2-70b-chat-hf"
+#model_name = "meta-llama/Llama-2-70b-chat-hf"
+model_name = "meta-llama/Meta-Llama-3-8B-Instruct"
 #model = "~/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name, padding_side="left", truncation=True)
 
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
@@ -17,14 +18,19 @@ bnb_config = BitsAndBytesConfig(
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
     quantization_config=bnb_config,
-    device_map="auto",
-    trust_remote_code=True,
+    device_map="auto"
+#    trust_remote_code=True,
 )
 
-df = pd.read_csv('/scratch/p281734/edos_aggregated_test.csv', sep=',', header=0)
-#df = pd.read_csv('/scratch/p281734/prova.csv', sep=',', header=0)
+#df = pd.read_csv('/scratch/p281734/edos_aggregated_test.csv', sep=',', header=0)
+df = pd.read_csv('/scratch/p281734/prova.csv', sep=',', header=0)
 
 responses = []
+
+#batch processing
+batch_size = 8
+text_batches = [df['text'][i:i + batch_size].tolist() for i in range(0, len(df), batch_size)]
+
 
 pipeline = transformers.pipeline(
     "text-generation",
@@ -34,16 +40,23 @@ pipeline = transformers.pipeline(
     device_map="auto",
 )
 
-for index, row in df.iterrows():
-    text = row['text']
+## revisions
+
+system_message =  {"role": "system", "content": "You are an AI expert in text classification and content moderation."}
+
+
+#for index, row in df.iterrows():
+#    text = row['text']
+for batch in text_batches:
     messages = [
-        {"role": "system", "content": "You are an AI expert in text classification and content moderation."},
-        {"role": "user", "content": """
-        You will read a text. Is the text sexist?.
-        Answer only with 0 for NOT and 1 for YES.
-        Do not write an introduction or summary. Classify always the text.
-        Here are twenty examples:
-        {{ 'response': [
+            [
+                system_message,
+            {"role": "user", "content": f"""
+                You will read a text. Is the text sexist?.
+                Answer only with 0 for NOT and 1 for YES.
+                Do not write an introduction or summary. Classify always the text.
+                Here are twenty examples:
+            {{ 'response': [
             {{'text': 'Shouldn’t he be preparing his last will & testament instead of tweeting stupid shit and further embarrassing himself and eroding his reputation and legacy?',
             'label': 0}},
             {{'text': 'Not in the case of Muslim woman',
@@ -85,53 +98,56 @@ for index, row in df.iterrows():
             {{'text': '"They see but theyll say some bs like"" i know my worth"". Fds women are so sub par that even tbe 6/10 white women on my tinder mog the entre sub forum to oblivion."',
             'label': 1}}        
                     ]}}
-        Now classify the following text: '''{text}'''
-        Respond only with the valid JSON format below:
-        {{ 'response' : [
-            {{'text': '{text}',
-            'label': }}
-                    ]}}
+            Now classify the following text: '''{text}'''
+            Respond only with the valid JSON format below:
+            {{ 'response' : [
+                {{'text': '{text}',
+                'label': }}
+                        ]}}
+                """}
+            ]
+            for text in batch
+        ]
 
-""".format(text=text)},
-    ]
+#""".format(text=text)},
+#    ]
 
-    prompt = pipeline.tokenizer.apply_chat_template(
-        messages, 
-        tokenize=False, 
-        add_generation_prompt=True
-    )
+    prompts = [pipeline.tokenizer.apply_chat_template(msg, tokenize=False, add_generation_prompt=True)
+            for msg in messages]
 
-    terminators = [
-        pipeline.tokenizer.eos_token_id,
-        pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ]
+#    terminators = [
+#        pipeline.tokenizer.eos_token_id,
+#        pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+#    ]
+
+    inputs = tokenizer(prompts, return_tensors="pt", padding=True, truncation=True).to("cuda")
 
     outputs = pipeline(
-        prompt,
+        prompts,
         max_new_tokens=256,
-        eos_token_id=terminators,
+#        eos_token_id=terminators,
         do_sample=False,
         temperature=0,
+        batch_size=batch_size
 )
 
 #    print(outputs)
-    response = outputs[0]["generated_text"][len(prompt):]
-#    print(response)
-#    responses.append(response)
+    for output in outputs:
+        response = output["generated_text"]
 
-    if str(response).startswith("{"):
-        #label_extracted = re.search("\'label\': (\w+)", response)
-        keyword = "\'label\':"
-        before_keyword, keyword, after_keyword = str(response).partition(keyword)
-#        print(after_keyword.replace("}]","").replace("}", ""))
-        clean_answer = after_keyword.replace("}]","").replace("}", "").replace("\"","").replace("\n","").replace("]","")
-        responses.append(clean_answer)
-    else:
-#        print("Refused")
-        responses.append("Refused")
+        if str(response).startswith("{"):
+            #label_extracted = re.search("\'label\': (\w+)", response)
+            keyword = "\'label\':"
+            before_keyword, keyword, after_keyword = str(response).partition(keyword)
+    #        print(after_keyword.replace("}]","").replace("}", ""))
+            clean_answer = after_keyword.replace("}]","").replace("}", "").replace("\"","").replace("\n","").replace("]","")
+            responses.append(clean_answer)
+        else:
+    #        print("Refused")
+            responses.append("Refused")
 
 
 df['model_answer'] = responses
-df.to_csv('/scratch/p281734/edos_llama2_ambiguous_first.csv', index=False)
-#df.to_csv('/scratch/p281734/prova-out.csv', index=False)
+#df.to_csv('/scratch/p281734/edos_llama2_ambiguous_first.csv', index=False)
+df.to_csv('/scratch/p281734/prova-out.csv', index=False)
 
