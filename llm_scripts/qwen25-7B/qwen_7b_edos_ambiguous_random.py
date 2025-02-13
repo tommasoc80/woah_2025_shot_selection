@@ -4,24 +4,17 @@ import transformers
 import torch
 import pandas as pd
 
-model_name = "meta-llama/Llama-2-70b-chat-hf"
-#model = "~/.cache/huggingface/hub/models--meta-llama--Meta-Llama-3-8B-Instruct/"
-tokenizer = AutoTokenizer.from_pretrained(model_name)
+model_name = "Qwen/Qwen2.5-7B-Instruct"
 
-tokenizer = AutoTokenizer.from_pretrained(model_name)
-
-bnb_config = BitsAndBytesConfig(
-    load_in_4bit=True,
-    bnb_4bit_quant_type="nf4",
-    bnb_4bit_compute_dtype=torch.float16,
-    bnb_4bit_use_double_quant=True,
-)
 model = AutoModelForCausalLM.from_pretrained(
     model_name,
-    quantization_config=bnb_config,
-    device_map="auto",
-    trust_remote_code=True,
+#    quantization_config=bnb_config,
+    torch_dtpe="auto",
+    device_map="auto"
+#    trust_remote_code=True,
 )
+
+tokenizer = AutoTokenizer.from_pretrained(model_name)
 
 df = pd.read_csv('/scratch/p281734/edos_aggregated_test.csv', sep=',', header=0)
 #df = pd.read_csv('/scratch/p281734/prova.csv', sep=',', header=0)
@@ -103,15 +96,15 @@ for index, row in df.iterrows():
         add_generation_prompt=True
     )
 
-    terminators = [
-        pipeline.tokenizer.eos_token_id,
-        pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ]
+#    terminators = [
+#        pipeline.tokenizer.eos_token_id,
+#        pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+#    ]
 
     outputs = pipeline(
         prompt,
         max_new_tokens=256,
-        eos_token_id=terminators,
+#        eos_token_id=terminators,
         do_sample=False,
         temperature=0,
 )
@@ -134,5 +127,5 @@ for index, row in df.iterrows():
 
 
 df['model_answer'] = responses
-df.to_csv('/scratch/p281734/edos_llama2_ambiguous_random.csv', index=False)
+df.to_csv('/scratch/p281734/edos_qwen7b_ambiguous_random.csv', index=False)
 
