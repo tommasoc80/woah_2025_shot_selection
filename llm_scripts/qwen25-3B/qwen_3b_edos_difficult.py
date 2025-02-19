@@ -122,5 +122,5 @@ for index, row in df.iterrows():
 
 
 df['model_answer'] = responses
-df.to_csv('/scratch/p281734/edos_qwen7b_difficult_first.csv', index=False)
+df.to_csv('/scratch/p281734/edos_qwen3b_difficult_first.csv', index=False)
 

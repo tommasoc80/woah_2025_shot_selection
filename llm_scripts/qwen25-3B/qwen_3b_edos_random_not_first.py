@@ -96,15 +96,15 @@ for index, row in df.iterrows():
         add_generation_prompt=True
     )
 
-    terminators = [
-        pipeline.tokenizer.eos_token_id,
-        pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
-    ]
+#    terminators = [
+#        pipeline.tokenizer.eos_token_id,
+#        pipeline.tokenizer.convert_tokens_to_ids("<|eot_id|>")
+#    ]
 
     outputs = pipeline(
         prompt,
         max_new_tokens=256,
-        eos_token_id=terminators,
+#        eos_token_id=terminators,
         do_sample=False,
         temperature=0,
 )
