@@ -1,0 +1,102 @@
+*AMBIGUOUS - NOT FIRST*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.6802    0.8127    0.7406      1981
+         1.0     0.8404    0.7207    0.7759      2710
+
+    accuracy                         0.7595      4691
+   macro avg     0.7603    0.7667    0.7582      4691
+weighted avg     0.7727    0.7595    0.7610      4691
+
+
+*AMBIGUOUS - SHUFFLED*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:3
+Refusal rate: 0.0006395224898742272
+              precision    recall  f1-score   support
+
+         0.0     0.6903    0.8046    0.7431      1981
+         1.0     0.8375    0.7362    0.7836      2710
+
+    accuracy                         0.7651      4691
+   macro avg     0.7639    0.7704    0.7634      4691
+weighted avg     0.7754    0.7651    0.7665      4691
+
+
+*DIFFICULT - NOT FIRST*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:3
+Refusal rate: 0.0006395224898742272
+              precision    recall  f1-score   support
+
+         0.0     0.6295    0.8541    0.7248      1981
+         1.0     0.8557    0.6325    0.7273      2710
+
+    accuracy                         0.7261      4691
+   macro avg     0.7426    0.7433    0.7261      4691
+weighted avg     0.7602    0.7261    0.7263      4691
+
+
+*DIFFICULT - SHUFFLED*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:3
+Refusal rate: 0.0006395224898742272
+              precision    recall  f1-score   support
+
+         0.0     0.6062    0.8228    0.6981      1981
+         1.0     0.8247    0.6092    0.7008      2710
+
+    accuracy                         0.6994      4691
+   macro avg     0.7154    0.7160    0.6994      4691
+weighted avg     0.7324    0.6994    0.6996      4691
+
+*RANDOM - NOT FIRST*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7173    0.7264    0.7218      1981
+         1.0     0.7981    0.7908    0.7944      2710
+
+    accuracy                         0.7636      4691
+   macro avg     0.7577    0.7586    0.7581      4691
+weighted avg     0.7640    0.7636    0.7638      4691
+
+*RANDOM - SHUFFLED*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:3
+Refusal rate: 0.0006395224898742272
+              precision    recall  f1-score   support
+
+         0.0     0.6874    0.7703    0.7265      1981
+         1.0     0.8159    0.7439    0.7782      2710
+
+    accuracy                         0.7551      4691
+   macro avg     0.7516    0.7571    0.7524      4691
+weighted avg     0.7616    0.7551    0.7564      4691
+
+
+- almost zero missing answers
+- ordered labels have a strong influence with the difficult examples
+- with the other example types, positive trend for the randomized order but it seems that
+differences are not stat. signiifcant --> to be checked
+
+
+
+
