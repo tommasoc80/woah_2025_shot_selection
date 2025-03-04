@@ -33,7 +33,7 @@ if __name__ == "__main__":
     parser.add_argument('--n-gpus', type=int, default=1)
     args = parser.parse_args()
 
-    df = pd.read_csv("/scratch/p281734/SBIC_binary_aggr_test.csv", sep=",", header=0)
+    df = pd.read_csv("/scratch-shared/tcaselli/SBIC_binary_aggr_test.csv", sep=",", header=0)
     model_id = "meta-llama/Meta-Llama-3-70B-Instruct"
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -75,4 +75,4 @@ if __name__ == "__main__":
             responses.append("Refused")
 
     df['model_answer'] = responses
-    df.to_csv('/scratch/p281734/sbic_llama3_70b_zero_shot.csv', index=False)
+    df.to_csv('/scratch-shared/tcaselli/sbic_llama3_70b_zero_shot.csv', index=False)

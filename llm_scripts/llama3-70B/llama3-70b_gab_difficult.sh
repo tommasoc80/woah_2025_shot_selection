@@ -1,9 +1,8 @@
 #!/bin/bash
-#SBATCH --time=05:00:00
-#SBATCH --partition=gpu
-#SBATCH --gpus-per-node=a100:4
-#SBATCH --job-name=llama3-8
-#SBATCH --mem=50G
+#SBATCH --partition=gpu_h100
+#SBATCH --time=00-08:00:00
+#SBATCH --gres=gpu:h100:4
+#SBATCH --mem=720G
 #SBATCH --output=gab_difficult.out
 
 module load Python/3.11.3-GCCcore-12.3.0
