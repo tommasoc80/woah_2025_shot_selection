@@ -32,7 +32,7 @@ Here are twenty examples:
 ```
 """
 
-INSTRUCTION_TEMPLATE = """Now classify whether the following text is sexist:'''{text}'''
+INSTRUCTION_TEMPLATE = """Now classify the following text:'''{text}'''
 Respond only with the valid JSON format below:
 {{'text': '{text}', 'label': …}}
 """
@@ -56,7 +56,7 @@ if __name__ == "__main__":
     parser.add_argument('--n-gpus', type=int, default=1)
     args = parser.parse_args()
 
-    df = pd.read_csv("/scratch/p281734/MD_hard_label_test.csv", sep=",", header=0)
+    df = pd.read_csv("/scratch-shared/tcaselli/MD_hard_label_test.csv", sep=",", header=0)
     model_id = "Qwen/Qwen2.5-72B-Instruct"
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -98,4 +98,4 @@ if __name__ == "__main__":
             responses.append("Refused")
 
     df['model_answer'] = responses
-    df.to_csv('/scratch/p281734/md_qwen_72_difficult_random.csv', index=False)
+    df.to_csv('/scratch-shared/tcaselli/md_qwen_72_difficult_random.csv', index=False)
