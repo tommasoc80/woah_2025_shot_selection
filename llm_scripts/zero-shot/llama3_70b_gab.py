@@ -75,4 +75,4 @@ if __name__ == "__main__":
             responses.append("Refused")
 
     df['model_answer'] = responses
-    df.to_csv('/scratch-shared/tcaselli/gab_llama3_70b_difficult_not_first.csv', index=False)
+    df.to_csv('/scratch-shared/tcaselli/gab_llama3_70b_zero_shot.csv', index=False)
