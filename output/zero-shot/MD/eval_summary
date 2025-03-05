@@ -1,0 +1,68 @@
+*LLAMA 32 - 3B*
+
+Number of entries: 3057
+Refused answers:2
+Missing answers:66
+Refusal rate: 0.022244030094864246
+              precision    recall  f1-score   support
+
+           0     0.9286    0.4144    0.5731      2039
+           1     0.4439    0.9361    0.6022      1018
+
+    accuracy                         0.5882      3057
+   macro avg     0.6862    0.6753    0.5876      3057
+weighted avg     0.7672    0.5882    0.5828      3057
+
+
+*LLAMA 3 - 8B*
+
+Number of entries: 3057
+Refused answers:26
+Missing answers:0
+Refusal rate: 0.00850507033038927
+              precision    recall  f1-score   support
+
+           0     0.9336    0.3585    0.5181      2039
+           1     0.4248    0.9489    0.5869      1018
+
+    accuracy                         0.5551      3057
+   macro avg     0.6792    0.6537    0.5525      3057
+weighted avg     0.7642    0.5551    0.5410      3057
+
+
+
+
+*LLAMA 3 - 70B*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.8943    0.7386    0.8090      2039
+           1     0.6118    0.8251    0.7026      1018
+
+    accuracy                         0.7674      3057
+   macro avg     0.7530    0.7819    0.7558      3057
+weighted avg     0.8002    0.7674    0.7736      3057
+
+
+
+*QWEN25 - 72B*
+
+
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:883
+Refusal rate: 0.28884527314360486
+              precision    recall  f1-score   support
+
+           0     0.7882    0.7062    0.7450      2039
+           1     0.5130    0.6198    0.5614      1018
+
+    accuracy                         0.6775      3057
+   macro avg     0.6506    0.6630    0.6532      3057
+weighted avg     0.6965    0.6775    0.6838      3057
+

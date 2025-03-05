@@ -1,0 +1,98 @@
+*AMBIGUOS - NOT FIRST*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9347    0.6739    0.7831      2039
+           1     0.5810    0.9057    0.7079      1018
+
+    accuracy                         0.7511      3057
+   macro avg     0.7578    0.7898    0.7455      3057
+weighted avg     0.8169    0.7511    0.7581      3057
+
+
+*AMBIGUOUS - SHUFFLED*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9753    0.5228    0.6807      2039
+           1     0.5046    0.9735    0.6647      1018
+
+    accuracy                         0.6729      3057
+   macro avg     0.7399    0.7481    0.6727      3057
+weighted avg     0.8185    0.6729    0.6754      3057
+
+
+
+*DIFFICULT - NOT FIRST*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.8686    0.6616    0.7511      2039
+           1     0.5412    0.7996    0.6455      1018
+
+    accuracy                         0.7076      3057
+   macro avg     0.7049    0.7306    0.6983      3057
+weighted avg     0.7596    0.7076    0.7160      3057
+
+
+*DIFFICULT - SHUFFLED*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.8954    0.6552    0.7567      2039
+           1     0.5508    0.8468    0.6674      1018
+
+    accuracy                         0.7190      3057
+   macro avg     0.7231    0.7510    0.7121      3057
+weighted avg     0.7807    0.7190    0.7270      3057
+
+
+*RANDOM - NOT FIRST*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9588    0.5483    0.6977      2039
+           1     0.5130    0.9528    0.6669      1018
+
+    accuracy                         0.6830      3057
+   macro avg     0.7359    0.7506    0.6823      3057
+weighted avg     0.8104    0.6830    0.6874      3057
+
+
+*RANDOM - SHUFFLED*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9540    0.5802    0.7216      2039
+           1     0.5289    0.9440    0.6780      1018
+
+    accuracy                         0.7013      3057
+   macro avg     0.7415    0.7621    0.6998      3057
+weighted avg     0.8125    0.7013    0.7070      3057
+
+
+
