@@ -78,8 +78,8 @@ if __name__ == '__main__':
     input_entropies = sys.argv[1]
     input_classes = sys.argv[2]
 
-    df_data = pd.read_csv(input_entropies, header=None)
-    df_classes = pd.read_csv(input_classes, header=0, sep=",")
+    df_data = pd.read_csv(input_entropies, header=None) # file with entropy scores per example
+    df_classes = pd.read_csv(input_classes, header=0, sep=",") # training set
 #    df_classes = pd.read_csv(input_classes, header=0, sep="\t") # for GAB
 
     dataset_name = input_entropies.split("/")[1]

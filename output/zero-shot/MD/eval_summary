@@ -66,3 +66,65 @@ Refusal rate: 0.28884527314360486
    macro avg     0.6506    0.6630    0.6532      3057
 weighted avg     0.6965    0.6775    0.6838      3057
 
+
+*QWEN25 - 3B*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9681    0.1638    0.2802      2039
+           1     0.3713    0.9892    0.5399      1018
+
+    accuracy                         0.4387      3057
+   macro avg     0.6697    0.5765    0.4101      3057
+weighted avg     0.7694    0.4387    0.3667      3057
+
+*QWEN25 - 7B*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9061    0.5066    0.6499      2039
+           1     0.4752    0.8949    0.6208      1018
+
+    accuracy                         0.6359      3057
+   macro avg     0.6907    0.7008    0.6353      3057
+weighted avg     0.7626    0.6359    0.6402      3057
+
+
+*QWEN25 - 3B*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:3
+Refusal rate: 0.0006395224898742272
+              precision    recall  f1-score   support
+
+         0.0     0.8005    0.4760    0.5970      1981
+         1.0     0.7045    0.9133    0.7954      2710
+
+    accuracy                         0.7286      4691
+   macro avg     0.7525    0.6947    0.6962      4691
+weighted avg     0.7451    0.7286    0.7116      4691
+
+
+*QWEN25 - 7B*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7831    0.6325    0.6998      1981
+         1.0     0.7645    0.8720    0.8147      2710
+
+    accuracy                         0.7708      4691
+   macro avg     0.7738    0.7522    0.7572      4691
+weighted avg     0.7724    0.7708    0.7662      4691

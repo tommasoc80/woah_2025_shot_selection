@@ -35,7 +35,7 @@ weighted avg     0.7782    0.4780    0.4861      4000
 *LLAMA 3 - 70B*
 
 Number of entries: 4000
-Refused answers:0
+Refused answers:0ccd
 Missing answers:5
 Refusal rate: 0.00125
               precision    recall  f1-score   support
@@ -63,4 +63,32 @@ Refusal rate: 0.1495
    macro avg     0.6440    0.6954    0.6273      4000
 weighted avg     0.7726    0.6575    0.6819      4000
 
+*QWEN25 - 3B*
 
+Number of entries: 4000
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9644    0.2502    0.3973      3030
+           1     0.2931    0.9711    0.4503       970
+
+    accuracy                         0.4250      4000
+   macro avg     0.6287    0.6106    0.4238      4000
+weighted avg     0.8016    0.4250    0.4101      4000
+
+*QWEN25 - 7B*
+
+Number of entries: 4000
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.9645    0.3591    0.5233      3030
+           1     0.3238    0.9588    0.4841       970
+
+    accuracy                         0.5045      4000
+   macro avg     0.6442    0.6589    0.5037      4000
+weighted avg     0.8092    0.5045    0.5138      4000
