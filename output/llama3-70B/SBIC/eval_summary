@@ -1,0 +1,104 @@
+*AMBIGUOUS - NOT FIRST*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7528    0.7441    0.7484      1981
+         1.0     0.8145    0.8214    0.8179      2710
+
+    accuracy                         0.7887      4691
+   macro avg     0.7836    0.7827    0.7832      4691
+weighted avg     0.7884    0.7887    0.7886      4691
+
+
+*AMBIGUOUS - SHUFFLED*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7533    0.7385    0.7459      1981
+         1.0     0.8116    0.8232    0.8174      2710
+
+    accuracy                         0.7875      4691
+   macro avg     0.7825    0.7809    0.7816      4691
+weighted avg     0.7870    0.7875    0.7872      4691
+
+
+
+*DIFFICULT - NOT FIRST*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7106    0.7128    0.7117      1981
+         1.0     0.7896    0.7878    0.7887      2710
+
+    accuracy                         0.7561      4691
+   macro avg     0.7501    0.7503    0.7502      4691
+weighted avg     0.7562    0.7561    0.7562      4691
+
+
+
+*DIFFICULT - SHUFFLED*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7241    0.7219    0.7230      1981
+         1.0     0.7971    0.7989    0.7980      2710
+
+    accuracy                         0.7664      4691
+   macro avg     0.7606    0.7604    0.7605      4691
+weighted avg     0.7663    0.7664    0.7663      4691
+
+
+*RANDOM - NOT FIRST*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7879    0.6749    0.7270      1981
+         1.0     0.7849    0.8672    0.8240      2710
+
+    accuracy                         0.7860      4691
+   macro avg     0.7864    0.7710    0.7755      4691
+weighted avg     0.7862    0.7860    0.7830      4691
+
+
+
+*RANDOM - SHUFFLED*
+
+Number of entries: 4691
+Refused answers:0
+Missing answers:2
+Refusal rate: 0.00042634832658281814
+              precision    recall  f1-score   support
+
+         0.0     0.7508    0.7102    0.7300      1981
+         1.0     0.7962    0.8277    0.8117      2710
+
+    accuracy                         0.7781      4691
+   macro avg     0.7735    0.7690    0.7708      4691
+weighted avg     0.7770    0.7781    0.7772      4691
+
+
+
+- order of labels is relevant: it pushes performances up (different from regular training methods: you always
+shuffle the examples to avoid introducing bias)
+- selection of examples seems to favor performance - with SBIC ambiguous cases are the best
+- Refusal rate limited - due to missing answers
