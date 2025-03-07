@@ -1,0 +1,18 @@
+*LLAMA 3 - 70B*
+
+Number of entries: 3057
+Refused answers:0
+Missing answers:0
+Refusal rate: 0.0
+              precision    recall  f1-score   support
+
+           0     0.8995    0.7155    0.7970      2039
+           1     0.5958    0.8399    0.6971      1018
+
+    accuracy                         0.7570      3057
+   macro avg     0.7477    0.7777    0.7471      3057
+weighted avg     0.7984    0.7570    0.7638      3057
+
+
+*QWEN25 - 72B*
+
