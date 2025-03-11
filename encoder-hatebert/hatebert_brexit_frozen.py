@@ -3,7 +3,8 @@ import emoji
 import re
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, TrainingArguments, Trainer, DataCollatorWithPadding
 from datasets import Dataset, DatasetDict
-import numpy as np, evaluate
+import numpy as np
+import evaluate
 from sklearn.metrics import classification_report
 
 
@@ -43,22 +44,17 @@ def compute_metrics(eval_pred):
 
 def train_model(tokenized_dataset, data_collator):
 
-
     for param in model.bert.parameters():
         param.requires_grad = False
 
     training_args = TrainingArguments(
-        output_dir="brexit_frozen",
-        learning_rate=1e-5,
+        output_dir="/scratch/p281734/brexit_frozen",
+        learning_rate=2e-5,
         per_device_train_batch_size=16,
         per_device_eval_batch_size=16,
         num_train_epochs=1,
-        weight_decay=0.01,
+        weight_decay=0.001,
         do_eval = True,
-        #eval_strategy="epoch",
-        #save_strategy="epoch",
-        no_cuda = True, # it should be commented out
-        #load_best_model_at_end=True,
         push_to_hub=False,
     )
 
@@ -82,14 +78,9 @@ def train_model(tokenized_dataset, data_collator):
 if __name__ == '__main__':
 
     # manually curate split
-    train = pd.read_csv('/home/p281734/projects/explicit_implicit_hate/woha2025/woah_2025_shot_selection/data/LWDis/HS-Brexit_dataset/aggregated_split/Brexit_hard_label_train.csv', delimiter=',', header=0)
-    dev = pd.read_csv('/home/p281734/projects/explicit_implicit_hate/woha2025/woah_2025_shot_selection/data/LWDis/HS-Brexit_dataset/aggregated_split/Brexit_hard_label_dev.csv', delimiter=',', header=0)
-    test = pd.read_csv('/home/p281734/projects/explicit_implicit_hate/woha2025/woah_2025_shot_selection/data/LWDis/HS-Brexit_dataset/aggregated_split/Brexit_hard_label_test.csv', delimiter=',', header=0)
-#    train = '/home/p281734/projects/explicit_implicit_hate/woha2025/woah_2025_shot_selection/data/LWDis/HS-Brexit_dataset/aggregated_split/Brexit_hard_label_train.csv'
-#    dev = '/home/p281734/projects/explicit_implicit_hate/woha2025/woah_2025_shot_selection/data/LWDis/HS-Brexit_dataset/aggregated_split/Brexit_hard_label_dev.csv'
-#    test = '/home/p281734/projects/explicit_implicit_hate/woha2025/woah_2025_shot_selection/data/LWDis/HS-Brexit_dataset/aggregated_split/Brexit_hard_label_test.csv'
-
-#    dataset = load_dataset("csv", data_files={"train": train, "dev": dev, "test": test})
+    train = pd.read_csv('/scratch/p281734/Brexit_hard_label_train.csv', delimiter=',', header=0)
+    dev = pd.read_csv('/scratch/p281734/Brexit_hard_label_dev.csv', delimiter=',', header=0)
+    test = pd.read_csv('/scratch/p281734/Brexit_hard_label_test.csv', delimiter=',', header=0)
 
     train_clean = clean_samples(train)
     train_clean.drop(columns="text", inplace=True)
@@ -120,4 +111,9 @@ if __name__ == '__main__':
     data_collator = DataCollatorWithPadding(tokenizer=tokenizer)
     predictions = train_model(tokenized_brexit, data_collator)
 
+    print("Evaluation Brexit Frozen - Test data:")
+    print()
     print(classification_report(test_clean["label"], predictions, digits=4))
+
+    test_clean['predictions'] = predictions
+    test_clean.to_csv('/scratch/p281734/brexit_hb_frozen.csv', index=False)

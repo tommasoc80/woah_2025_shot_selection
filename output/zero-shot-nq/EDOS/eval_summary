@@ -16,3 +16,15 @@ weighted avg     0.8420    0.6900    0.7115      4000
 
 *QWEN25 - 72B*
 
+Number of entries: 4000
+Refused answers:0
+Missing answers:3375
+Refusal rate: 0.84375
+              precision    recall  f1-score   support
+
+           0     0.7641    0.9462    0.8455      3030
+           1     0.3427    0.0876    0.1396       970
+
+    accuracy                         0.7380      4000
+   macro avg     0.5534    0.5169    0.4925      4000
+weighted avg     0.6619    0.7380    0.6743      4000
