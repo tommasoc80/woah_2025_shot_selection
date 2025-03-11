@@ -83,15 +83,21 @@ if __name__ == '__main__':
 
     train_clean = clean_samples(train)
     train_clean.drop(columns="post", inplace=True)
+    train_clean.dropna(inplace=True)
+    train_clean['offensiveYN'] = train_clean['offensiveYN'].astype(int)
     train_clean.rename(columns={"offensiveYN": "label", "cleaned_text": "text"}, inplace=True)
 
     dev_clean = clean_samples(dev)
     dev_clean.drop(columns="post", inplace=True)
+    dev_clean.dropna(inplace=True)
+    dev_clean['offensiveYN'] = dev_clean['offensiveYN'].astype(int)
     dev_clean.rename(columns={"offensiveYN": "label", "cleaned_text": "text"}, inplace=True)
 
     test_clean = clean_samples(test)
     test_clean.drop(columns="post", inplace=True)
-    test_clean.rename(columns={"offensiveYN": "label", "cleaned_text": "text"}, inplace=True)
+    test_clean.dropna(inplace=True)
+    test_clean['offensiveYN'] = test_clean['offensiveYN'].astype(int)
+    test_clean.rename(columns={"offensiveYN": "label", "cleaned_text": "text"}, inplace=True)+
 
     dataset = DatasetDict({
         "train": Dataset.from_pandas(train_clean),
