@@ -49,6 +49,18 @@ weighted avg     0.7805    0.5777    0.6022      4000
 
 *DIFFICULT - SHUFFLED*
 
+Number of entries: 4000
+Refused answers:0
+Missing answers:105
+Refusal rate: 0.02625
+              precision    recall  f1-score   support
+
+           0     0.9050    0.5188    0.6595      3030
+           1     0.3557    0.8299    0.4980       970
+
+    accuracy                         0.5942      4000
+   macro avg     0.6304    0.6744    0.5788      4000
+weighted avg     0.7718    0.5942    0.6204      4000
 
 
 

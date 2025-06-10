@@ -6,6 +6,5 @@
 #SBATCH --mem=50G
 #SBATCH --output=md_hb_ft.out
 
-module load Python/3.9.6-GCCcore-11.2.0
 source ./bin/activate
 python hatebert_md.py
