@@ -56,7 +56,7 @@ if __name__ == "__main__":
     parser.add_argument('--n-gpus', type=int, default=1)
     args = parser.parse_args()
 
-    df = pd.read_csv("/scratch/p281734/edos_aggregated_test.csv", sep=",", header=0)
+    df = pd.read_csv("/scratch-shared/tcaselli/edos_aggregated_test.csv", sep=",", header=0)
     model_id = "meta-llama/Meta-Llama-3-70B-Instruct"
 
     tokenizer = AutoTokenizer.from_pretrained(model_id)
@@ -74,8 +74,8 @@ if __name__ == "__main__":
         max_model_len=args.max_model_len,
         gpu_memory_utilization=args.gpu_memory_utilization,
         tensor_parallel_size=args.n_gpus,
-        quantization="bitsandbytes",
-        load_format="bitsandbytes",
+        #quantization="bitsandbytes",
+        #load_format="bitsandbytes",
     )
 
     outputs = llm.generate(

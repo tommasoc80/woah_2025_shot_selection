@@ -74,8 +74,8 @@ if __name__ == "__main__":
         max_model_len=args.max_model_len,
         gpu_memory_utilization=args.gpu_memory_utilization,
         tensor_parallel_size=args.n_gpus,
-        quantization="bitsandbytes",
-        load_format="bitsandbytes",
+      #  quantization="bitsandbytes",
+       # load_format="bitsandbytes",
     )
 
     outputs = llm.generate(
