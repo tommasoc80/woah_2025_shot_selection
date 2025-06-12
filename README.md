@@ -1,3 +1,17 @@
 # Learning from Disagreement: Entropy-Guided Few-Shot Selection for Toxic Language Detection
 
-![work in progress](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExc2J6eHBoM2dramsyYjR5MTByZm90NmFxajV4c2JwMDRzY3RveDhudCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3bBFnbf2Z9lxNDkU8G/giphy.gif)
+This repository contains the code and links to the datasets used for the paper "Learning from Disagreement: Entropy-Guided Few-Shot Selection for Toxic Language Detection" accepted at WOAH 2025mco co-located with ACL 2025.
+
+The datasets we used can be retrived at their respective repositories: 
+
+- EDOS: https://github.com/rewire-online/edos
+- Brexit (part of LeWiDi 2023 - original name HS-Brexit_dataset): https://github.com/Le-Wi-Di/le-wi-di.github.io/blob/main/LeWiDi-2ndEDITION-data_post-competition.zip
+- GAB Hate speech corpus: https://osf.io/edua3/
+- Multi-Domain Agreeement Dataset (part of LeWiDi 2023 - original name MD-Agreement_dataset): https://github.com/Le-Wi-Di/le-wi-di.github.io/blob/main/LeWiDi-2ndEDITION-data_post-competition.zip
+- SBIC: https://maartensap.com/social-bias-frames/
+
+The /data/ folder contains the followings:
+- the format we have used to compute the entropy scores with [MACE](https://github.com/dirkhovy/MACE)
+- 
+
+We make available the following data distributions *only* for replicability purposes since there is no 
